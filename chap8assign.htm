@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Chapter 8 Assignment</title>
+	
+	<style>
+		body{background-color:violet}
+	</style>
+	
+	<h1><b>Browser Settings: </b></h1>
+	
+	<script>
+	if(navigator.javaEnabled){
+		document.write("Java is enabled! <br>");
+	}
+	else{
+		document.write("Java is disabled! <br>");
+	}
+	
+	document.write("Browser platform: " + navigator.platform + "<br>");
+	document.write("Browser code name: " + navigator.appCodeName + "<br>");
+	document.write("Browser name: " + navigator.appName + "<br>");
+	document.write("Browser version: " + navigator.appVersion + "<br>");
+	document.write("<br>");
+	
+	var gender, the_gender;
+	var full_name = prompt("Please enter your first and last name","");
+	var age = prompt("Please enter your age in years","");
+	age = parseInt(age);
+	gender = prompt("Please enter the gender you identify with (e.g. M or F)","");
+	the_gender = gender.toUpperCase();
+	while (the_gender != 'M' && the_gender != 'F') {
+		gender = prompt("Gender was invalid! Please enter the gender you identify with (e.g. M or F)","");
+		the_gender = gender.toUpperCase();
+	}
+	//document.write("Name: " + full_name + "<br>");
+	//document.write("Age: " + age + "<br>");
+	//document.write("gender selected: " + the_gender);
+	
+	function get_expected(the_gender, age){
+		var life_expected;
+		if(the_gender == 'M'){
+			life_expected = 76; 
+		}
+		else if(the_gender == 'F'){
+			life_expected = 81;
+		}
+		var remaining = life_expected - age;
+		return remaining;
+	}
+	
+	var person = new Object();
+	person.fullName = full_name;
+	person.age = age;
+	person.gender = the_gender;
+	person.years_left = get_expected(the_gender, age);
+	
+	document.write("Person's Properties: <br>")
+	with(person){
+		document.write(fullName + "<br>");
+		document.write(age + "<br>");
+		document.write(gender + "<br>");
+		document.write(years_left + "<br>");
+	}
+	
+	if(the_gender == 'M'){
+		document.write("Hi " + person.fullName + ", as a " + person.age + " year old male you are expected to live " +
+		person.years_left + " more years!");
+	}
+	else if(the_gender == 'F'){
+		document.write("Hi " + person.fullName + ", as a " + person.age + " year old female you are expected to live " +
+		person.years_left + " more years!");
+	}
+	
+	</script>
+	
+</head>
+<body>
+
+
+</body>
